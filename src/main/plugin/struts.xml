@@ -1,0 +1,16 @@
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+    <constant name="struts.enable.SlashesInActionNames" value="true"/>
+    <!--<constant name="struts.action.extension" value=""/>-->
+
+    <package name="Coop_poll-actions" extends="community-default">
+        <action name="CoopPoll/new" class="com.coop.openhouse.CoopPollAction" method="createPoll">
+            <result name="success" type="freemarker">/plugins/coop_poll/resources/templates/new.ftl </result>
+        </action>
+        <action name="CoopPoll/submit" class="com.coop.openhouse.CoopPollAction" method="execute">
+            <result name="success" type="freemarker">/plugins/coop_poll/resources/templates/list.ftl</result>
+        </action>
+
+    </package>
+</struts>

@@ -1,0 +1,15 @@
+<plugin xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="http://www.jivesoftware.com/schemas/clearspace/2_5/plugin.xsd">
+
+    <name>coop_poll</name>
+    <description>custom content for creating poll</description>
+    <author>ThoughtWorks</author>
+    <version>1.0.0</version>
+    <databaseKey>Coop_poll</databaseKey>
+    <databaseVersion>1</databaseVersion>
+
+    <minServerVersion>6.0</minServerVersion>
+    <maxServerVersion>6.0.9.9</maxServerVersion>
+
+    <!-- TODO: URL Mapping for poll JSON -->
+</plugin>

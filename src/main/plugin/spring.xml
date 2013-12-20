@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.5.xsd
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd"
+       default-autowire="no" default-init-method="init" default-destroy-method="destroy">
+
+    <bean id="coop-poll" class="com.coop.openhouse.CoopPollPlugin"/>
+
+    <bean id="coop-poll-link" class="com.coop.openhouse.CoopPollLink" scope="prototype">
+        <property name="ID" value="custom_poll"/>
+        <property name="nameKey" value="Custom Poll"/>
+        <property name="linkCss" value="j-globalNavLink j-ui-elem"/>
+    </bean>
+
+    <bean id="coop-poll-navbar-link" class="com.jivesoftware.community.util.spring.MergeableCollection" scope="prototype" parent="navBarLinks">
+        <property name="source">
+            <util:list value-type="com.jivesoftware.community.web.component.ActionLink" scope="prototype">
+                <ref bean ="coop-poll-link"/>
+            </util:list>
+        </property>
+    </bean>
+
+    <bean id="pollDao" class="com.coop.openhouse.dao.PollDao">
+        <property name="dataSource">
+            <util:property-path path="dataSourceFactory.dataSource" />
+        </property>
+    </bean>
+
+    <bean id="pollService" class="com.coop.openhouse.service.PollService"/>
+
+
+</beans>
