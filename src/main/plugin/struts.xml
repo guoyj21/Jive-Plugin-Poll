@@ -4,12 +4,12 @@
     <constant name="struts.enable.SlashesInActionNames" value="true"/>
     <!--<constant name="struts.action.extension" value=""/>-->
 
-    <package name="Coop_poll-actions" extends="community-default">
-        <action name="CoopPoll/new" class="com.coop.openhouse.CoopPollAction" method="createPoll">
-            <result name="success" type="freemarker">/plugins/coop_poll/resources/templates/new.ftl </result>
+    <package name="poll-actions" extends="community-default">
+        <action name="openhouse/poll/new" class="com.openhouse.jive.plugin.action.PollAction" method="newPoll">
+            <result name="success" type="freemarker">/plugins/poll-plugin/resources/templates/new.ftl </result>
         </action>
-        <action name="CoopPoll/submit" class="com.coop.openhouse.CoopPollAction" method="execute">
-            <result name="success" type="freemarker">/plugins/coop_poll/resources/templates/list.ftl</result>
+        <action name="openhouse/poll/submit" class="com.openhouse.jive.plugin.action.PollAction" method="savePoll">
+            <result name="success" type="freemarker">/plugins/poll-plugin/resources/templates/list.ftl</result>
         </action>
 
     </package>

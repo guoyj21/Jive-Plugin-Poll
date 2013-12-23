@@ -1,16 +1,16 @@
-<schema name="Coop_poll">
-    <table name="CoopPollType" description="Poll option Types">
+<schema name="openhouse_poll">
+    <table name="polltype" description="Poll option Types">
         <column name ="Id" type="bigint" nullable="false" description="Primary Key"/>
         <column name ="Type" type="varchar" nullable="false" description="Types of options possible" />
         <index type="primary" name="CoopPollTypeId_pk" column="Id"></index>
     </table>
-    <table name="CoopCategory" description="Poll Category">
+    <table name="pollcategory" description="Poll Category">
         <column name ="Id" type="bigint" nullable="false" description="Primary Key"/>
         <column name ="Name" type="varchar" nullable="false" description="Category of poll" />
         <column name ="Color" type="varchar" nullable="false" description="Color of poll" />
         <index type="primary" name="CoopCategoryId_pk" column="Id"></index>
     </table>
-    <table name="CoopPoll" description="Cooperative Poll ">
+    <table name="poll" description="Cooperative Poll ">
         <column name ="Id" type="bigint" nullable="false" description="Primary Key"/>
         <column name ="CreatedOn" type="bigint" nullable="false" description="Poll created on" />
         <column name ="PublishedOn" type="bigint" nullable="false"  description="Poll is visible from this bigint"/>
@@ -23,27 +23,27 @@
         <column name ="Active" type="boolean" nullable="false"  description="Active Polls"/>
         <column name ="Published" type="boolean" nullable="false"  description="Published Polls"/>
         <index type="primary" name="CoopPollId_pk" column="Id"></index>
-        <constraint type="foreignkey" name="CoopPoll_TypeId_fk" column="PollTypeId" reftable="CoopPollType" refcolumn="Id"></constraint>
-        <constraint type="foreignkey" name="CoopPoll_CategoryId_fk" column="PollCategoryId" reftable="CoopCategory" refcolumn="Id"></constraint>
+        <constraint type="foreignkey" name="CoopPoll_TypeId_fk" column="PollTypeId" reftable="polltype" refcolumn="Id"></constraint>
+        <constraint type="foreignkey" name="CoopPoll_CategoryId_fk" column="PollCategoryId" reftable="pollcategory" refcolumn="Id"></constraint>
     </table>
 
-    <table name="CoopPollOptions" description="possible options for a poll question">
+    <table name="polloptions" description="possible options for a poll question">
         <column name ="Id" type="bigint" nullable="false" description="Primary Key"/>
         <column name ="PollId" type="bigint" nullable="false" description="Foreign key for poll" />
         <column name ="OptionText" type="varchar" nullable="true"  description="free text for option"/>
         <column name ="Active" type="boolean" nullable="false"  description="Active option"/>
         <index type="primary" name="CoopPollOptionsId_pk" column="Id"></index>
-        <constraint type="foreignkey" name="CoopPollOptions_PollId_fk" column="PollId" reftable="CoopPoll" refcolumn="Id"></constraint>
+        <constraint type="foreignkey" name="CoopPollOptions_PollId_fk" column="PollId" reftable="poll" refcolumn="Id"></constraint>
     </table>
-    <table name="CoopPollAnswer" description="Answer of the questions">
+    <table name="pollanswer" description="Answer of the questions">
         <column name ="Id" type="bigint" nullable="false" description="Primary Key"/>
         <column name ="JiveUserId" type="bigint" nullable="false" description="Foreign key for jiveuser" />
         <column name ="PollOptionId" type="bigint" nullable="true"  description="Foreign key for pollOption table"/>
         <column name ="PollId" type="bigint" nullable="true"  description="Foreign key for poll table"/>
         <column name ="OptionText" type="varchar" nullable="false"  description="Option for question"/>
         <index type="primary" name="CoopPollAnswerId_pk" column="Id"></index>
-        <constraint type="foreignkey" name="CoopPollAnswer_OptionId_fk" column="PollOptionId" reftable="CoopPollOptions" refcolumn="Id"></constraint>
-        <constraint type="foreignkey" name="CoopPollAnswer_PollId_fk" column="PollId" reftable="CoopPoll" refcolumn="Id"></constraint>
+        <constraint type="foreignkey" name="CoopPollAnswer_OptionId_fk" column="PollOptionId" reftable="polloptions" refcolumn="Id"></constraint>
+        <constraint type="foreignkey" name="CoopPollAnswer_PollId_fk" column="PollId" reftable="poll" refcolumn="Id"></constraint>
         <!--<constraint type="foreignkey" name="CoopPollAnswer_JiveUserId_fk" column="JiveUserId" reftable="Jive SBS Schema.jiveUser" refcolumn="userID"></constraint>-->
     </table>
 

@@ -5,12 +5,12 @@
      These parameters were pased in via the commandline when this pom was created by the archetype.
       -->
     <modelVersion>4.0.0</modelVersion>
-    <groupId>coop_poll</groupId>
-    <artifactId>coop_poll</artifactId>
-    <name>coop_poll</name>
+
+    <groupId>com.openhouse.jive</groupId>
+    <artifactId>poll-plugin</artifactId>
+    <name>poll-plugin</name>
     <version>1.0</version>
     <packaging>jar</packaging>
-    <url>http://www.jivesoftware.com</url>
 
     <!--
     If this is plugin in a customization project, it is recommended to use a parent reference

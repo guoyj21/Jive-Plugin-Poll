@@ -7,29 +7,30 @@
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd"
        default-autowire="no" default-init-method="init" default-destroy-method="destroy">
 
-    <bean id="coop-poll" class="com.coop.openhouse.CoopPollPlugin"/>
+    <bean id="pollPlugin" class="com.openhouse.jive.plugin.PollPlugin"/>
 
-    <bean id="coop-poll-link" class="com.coop.openhouse.CoopPollLink" scope="prototype">
+    <bean id="pollNavMenuLink" class="com.jivesoftware.community.navbar.NavMenuLink" scope="prototype">
         <property name="ID" value="custom_poll"/>
         <property name="nameKey" value="Custom Poll"/>
         <property name="linkCss" value="j-globalNavLink j-ui-elem"/>
+        <property name="url" value="/openhouse/poll/new.jspa"/>
     </bean>
 
-    <bean id="coop-poll-navbar-link" class="com.jivesoftware.community.util.spring.MergeableCollection" scope="prototype" parent="navBarLinks">
+    <bean id="pollNavbarLink" class="com.jivesoftware.community.util.spring.MergeableCollection" scope="prototype" parent="navBarLinks">
         <property name="source">
             <util:list value-type="com.jivesoftware.community.web.component.ActionLink" scope="prototype">
-                <ref bean ="coop-poll-link"/>
+                <ref bean ="pollNavMenuLink"/>
             </util:list>
         </property>
     </bean>
 
-    <bean id="pollDao" class="com.coop.openhouse.dao.PollDao">
+    <bean id="pollDao" class="com.openhouse.jive.plugin.dao.PollDao">
         <property name="dataSource">
             <util:property-path path="dataSourceFactory.dataSource" />
         </property>
     </bean>
 
-    <bean id="pollService" class="com.coop.openhouse.service.PollService"/>
+    <bean id="pollService" class="com.openhouse.jive.plugin.service.PollService"/>
 
 
 </beans>
