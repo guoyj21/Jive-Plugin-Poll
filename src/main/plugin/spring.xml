@@ -24,13 +24,16 @@
         </property>
     </bean>
 
+    <bean id="pollService" class="com.openhouse.jive.plugin.service.PollService">
+        <property name="pollDao" ref="pollDao"/>
+    </bean>
+
     <bean id="pollDao" class="com.openhouse.jive.plugin.dao.PollDao">
         <property name="dataSource">
             <util:property-path path="dataSourceFactory.dataSource" />
         </property>
     </bean>
 
-    <bean id="pollService" class="com.openhouse.jive.plugin.service.PollService"/>
 
 
 </beans>
